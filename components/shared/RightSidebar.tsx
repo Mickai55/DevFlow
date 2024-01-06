@@ -4,19 +4,19 @@ import React from "react";
 import RenderTag from "./RenderTag";
 
 const hotQuestions: any = [
-  { _id: 1, title: "test1" },
-  { _id: 2, title: "test2" },
-  { _id: 3, title: "test3" },
-  { _id: 4, title: "test4" },
-  { _id: 5, title: "test5" },
+  { _id: "1", title: "test1" },
+  { _id: "2", title: "test2" },
+  { _id: "3", title: "test3" },
+  { _id: "4", title: "test4" },
+  { _id: "5", title: "test5" },
 ];
 
 const popularTags: any = [
-  { _id: 1, name: "javascript", totalQuestions: 5 },
-  { _id: 2, name: "react", totalQuestions: 2 },
-  { _id: 3, name: "next", totalQuestions: 5 },
-  { _id: 4, name: "vue", totalQuestions: 8 },
-  { _id: 5, name: "redux", totalQuestions: 4 },
+  { _id: "1", name: "javascript", totalQuestions: 5 },
+  { _id: "2", name: "react", totalQuestions: 2 },
+  { _id: "3", name: "next", totalQuestions: 5 },
+  { _id: "4", name: "vue", totalQuestions: 8 },
+  { _id: "5", name: "redux", totalQuestions: 4 },
 ];
 
 const RightSidebar = () => {
@@ -53,7 +53,7 @@ const RightSidebar = () => {
       <div className="mt-16">
         <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
         <div className="mt-7 flex flex-col gap-4">
-          {popularTags.map((tag) => (
+          {popularTags.map((tag: any) => (
             <RenderTag
               key={tag._id}
               _id={tag._id}
