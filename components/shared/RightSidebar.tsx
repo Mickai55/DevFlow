@@ -30,7 +30,7 @@ const RightSidebar = () => {
       <div>
         <h3 className="h3-bold text-dark200_light900">Top Questions</h3>
         <div className="mt-7 flex w-full flex-col gap-[30px]">
-          {hotQuestions.map((question) => (
+          {hotQuestions.map((question: any) => (
             <Link
               key={question._id}
               className="flex cursor-pointer items-center justify-between gap-7"
