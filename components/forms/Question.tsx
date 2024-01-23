@@ -146,7 +146,6 @@ const Question = ({ mongoUserId }: Props) => {
                         // @ts-ignore
                         editorRef.current.getContent()
                       );
-                    console.log(field);
                   }}
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   onInit={(evt, editor) => {
