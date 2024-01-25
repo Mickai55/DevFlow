@@ -5,8 +5,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const AskQuestion = async () => {
-  // const { userId } = auth();
-  const userId = "clrk12345";
+  const { userId } = auth();
 
   if (!userId) {
     redirect("/sign-in");
