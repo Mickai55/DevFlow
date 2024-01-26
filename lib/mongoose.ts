@@ -9,7 +9,6 @@ export const connectToDatabase = async () => {
     throw new Error("Please add your Mongo URI to .env.local");
   }
   if (isConnected) {
-    console.log("MongoDB is already connected");
     return;
   }
   try {

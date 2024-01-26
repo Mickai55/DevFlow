@@ -15,7 +15,7 @@ interface Props {
   };
 }
 
-const UserCard = async ({ user }: Props) => {
+const UserCard = async ({ user }: Props | any) => {
   const interactedTags = await getTopInteractedTags({ userId: user.clerkId });
 
   return (
