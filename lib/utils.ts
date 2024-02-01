@@ -28,6 +28,9 @@ export const getTimestamp = (createdAt: Date): string => {
 };
 
 export const formatAndDivideNumber = (num: number): string => {
+  if (!num) {
+    return "0";
+  }
   if (num >= 1000000) {
     // If the number is in millions, divide by 1 million and append 'M'
     return (num / 1000000).toFixed(1) + "M";

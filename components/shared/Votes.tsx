@@ -1,22 +1,24 @@
 "use client";
 
 import { downvoteAnswer, upvoteAnswer } from "@/lib/actions/answer.action";
+import { viewQuestion } from "@/lib/actions/interaction.action";
 import {
   downvoteQuestion,
   upvoteQuestion,
 } from "@/lib/actions/question.action";
+import { toggleSaveQuestion } from "@/lib/actions/user.action";
 import { formatAndDivideNumber } from "@/lib/utils";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface Props {
   type: string;
   itemId: string;
   userId: string;
-  upvotes: number;
+  upvotes: string[];
   hasupVoted: boolean;
-  downvotes: number;
+  downvotes: string[];
   hasdownVoted: boolean;
   hasSaved?: boolean;
 }
@@ -33,8 +35,13 @@ const Votes = ({
 }: Props) => {
   const path = usePathname();
   const router = useRouter();
-  function handleSave() {
-    //
+
+  async function handleSave() {
+    await toggleSaveQuestion({
+      userId: JSON.parse(userId),
+      questionId: JSON.parse(itemId),
+      path,
+    });
   }
   async function handleVote(action: string) {
     if (!userId) {
@@ -85,6 +92,13 @@ const Votes = ({
     }
   }
 
+  useEffect(() => {
+    viewQuestion({
+      questionId: JSON.parse(itemId),
+      userId: userId ? JSON.parse(userId) : undefined,
+    });
+  }, [itemId, type, userId, router]);
+
   return (
     <div>
       <div className="flex gap-5">
@@ -103,7 +117,7 @@ const Votes = ({
             min-w-[18px] rounded-sm p-1"
             >
               <p className="subtle-medium text-dark400_light900">
-                {formatAndDivideNumber(upvotes)}
+                {formatAndDivideNumber(upvotes.length)}
               </p>
             </div>
           </div>
@@ -124,7 +138,7 @@ const Votes = ({
             min-w-[18px] rounded-sm p-1"
             >
               <p className="subtle-medium text-dark400_light900">
-                {formatAndDivideNumber(downvotes)}
+                {formatAndDivideNumber(downvotes.length)}
               </p>
             </div>
           </div>
