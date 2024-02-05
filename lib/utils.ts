@@ -42,3 +42,14 @@ export const formatAndDivideNumber = (num: number): string => {
     return num.toString();
   }
 };
+
+export const getJoinedDate = (inputDate: Date): string => {
+  // Get month and year from the input date
+  const month = inputDate.toLocaleString("en-US", { month: "long" });
+  const year = inputDate.getFullYear();
+
+  // Concatenate month and year with a space in between
+  const joinedDate = `${month} ${year}`;
+
+  return joinedDate;
+};

@@ -20,6 +20,7 @@ interface QuestionProps {
   views: number;
   answers: object[];
   createdAt: Date;
+  clerkId?: string | null;
 }
 
 const QuestionCard = ({
@@ -51,6 +52,8 @@ const QuestionCard = ({
             </h3>
           </Link>
         </div>
+
+        {/** If signed in add edit delte actions */}
       </div>
 
       <div className="mt-3.5 flex flex-wrap gap-2">
