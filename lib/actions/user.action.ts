@@ -15,8 +15,9 @@ import {
 import { revalidatePath } from "next/cache";
 import Question from "@/database/question.model";
 import Tag from "@/database/tag.model";
-import { FilterQuery } from "mongoose";
+import mongoose, { FilterQuery } from "mongoose";
 import Answer from "@/database/answer.model";
+import console from "console";
 
 export async function getUserById(params: any) {
   try {
@@ -47,7 +48,9 @@ export async function updateUser(params: UpdateUserParams) {
   try {
     connectToDatabase();
     const { clerkId, updateData, path } = params;
-    await User.create({ clerkId }, updateData, {
+    console.log(clerkId);
+
+    await User.findByIdAndUpdate({ clerkId: clerkId }, updateData, {
       new: true,
     });
 
