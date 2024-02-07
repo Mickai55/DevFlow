@@ -2,24 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import RenderTag from "./RenderTag";
+import { getHotQuestions } from "@/lib/actions/question.action";
+import { getTopPopularTags } from "@/lib/actions/tag.actions";
 
-const hotQuestions: any = [
-  { _id: "1", title: "test1" },
-  { _id: "2", title: "test2" },
-  { _id: "3", title: "test3" },
-  { _id: "4", title: "test4" },
-  { _id: "5", title: "test5" },
-];
+const RightSidebar = async () => {
+  const hotQuestions = await getHotQuestions();
+  const popularTags = await getTopPopularTags();
 
-const popularTags: any = [
-  { _id: "1", name: "javascript", totalQuestions: 5 },
-  { _id: "2", name: "react", totalQuestions: 2 },
-  { _id: "3", name: "next", totalQuestions: 5 },
-  { _id: "4", name: "vue", totalQuestions: 8 },
-  { _id: "5", name: "redux", totalQuestions: 4 },
-];
-
-const RightSidebar = () => {
   return (
     <section
       className="background-light900_dark200 light-border
@@ -34,7 +23,7 @@ const RightSidebar = () => {
             <Link
               key={question._id}
               className="flex cursor-pointer items-center justify-between gap-7"
-              href={`/questions/${question._id}`}
+              href={`/question/${question._id}`}
             >
               <p className="body-medium text-dark500_light700">
                 {question.title}
@@ -58,7 +47,7 @@ const RightSidebar = () => {
               key={tag._id}
               _id={tag._id}
               name={tag.name}
-              totalQuestions={tag.totalQuestions}
+              totalQuestions={tag.numberOfQuestions}
               showCount
             />
           ))}
