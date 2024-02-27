@@ -47,6 +47,7 @@ export async function getQuestions(params: GetQuestionsParams) {
         query.answers = { $size: 0 };
         break;
       default:
+        sortOptions = { createdAt: -1 };
         break;
     }
 
