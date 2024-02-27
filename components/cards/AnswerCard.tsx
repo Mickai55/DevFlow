@@ -33,7 +33,7 @@ const AnswerCard = ({
   return (
     <Link
       href={`/question/${question?._id}/#${_id}`}
-      className="card-wrapper rounded-[10px] py-9 px-11"
+      className="card-wrapper rounded-[10px] py-9 px-11 dark:shadow-none"
     >
       <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
         <div>

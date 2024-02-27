@@ -43,7 +43,7 @@ const AllAnswers = async ({
               {/*SPAN ID8*/}
               <Link
                 href={`/profile/${answer.author.clerkId}`}
-                className="flex flex-1 items-start gap-1 sm:items-center"
+                className="flex flex-1 items-start gap-1 sm:items-center text-dark100_light900"
               >
                 <Image
                   src={answer.author.picture}

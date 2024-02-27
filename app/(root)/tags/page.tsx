@@ -46,7 +46,7 @@ const Page = async ({ searchParams }: SearchParamsProps) => {
               className="shadow-light100_darknone"
             >
               <article
-                className="background-light900_dark100 light-border
+                className="background-light900_dark100 text-dark200_light800 light-border
               flex w-full flex-col rounded-2xl border px-8 py-10 sm:w-[260px]"
               >
                 {" "}
