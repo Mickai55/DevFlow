@@ -8,6 +8,11 @@ import { getSavedQuestions } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 
+export const metadata = {
+  title: "Collections | DevFlow",
+  description: "DevFlow - Ask and answer questions",
+};
+
 export default async function Home({ searchParams }: SearchParamsProps) {
   const { userId } = auth();
   if (!userId) {

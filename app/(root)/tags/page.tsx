@@ -9,6 +9,11 @@ import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
 
+export const metadata = {
+  title: "Tags | DevFlow",
+  description: "DevFlow - Ask and answer questions",
+};
+
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllTags({
     searchQuery: searchParams.q,
