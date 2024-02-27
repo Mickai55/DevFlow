@@ -7,6 +7,7 @@ import { getAllUsers } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import React from "react";
+import Loading from "./loading";
 
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({

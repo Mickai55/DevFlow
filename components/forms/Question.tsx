@@ -22,6 +22,7 @@ import Image from "next/image";
 import { createQuestion, editQuestion } from "@/lib/actions/question.action";
 import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeProvider";
+import { toast } from "../ui/use-toast";
 
 interface Props {
   type?: string;
@@ -76,6 +77,11 @@ const Question = ({ type, questionDetails, mongoUserId }: Props) => {
           author: JSON.parse(mongoUserId),
           path: pathname,
         });
+
+        toast({
+          title: `Question Added`,
+        });
+
         // navigate to home page
         router.push("/");
       }
@@ -142,7 +148,7 @@ const Question = ({ type, questionDetails, mongoUserId }: Props) => {
                 />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
-                Be specific and imagine you$apos;re asking a question to another
+                Be specific and imagine you're asking a question to another
                 person.
               </FormDescription>
               <FormMessage className="text-red-500" />
