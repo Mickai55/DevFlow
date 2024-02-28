@@ -17,9 +17,9 @@ interface Props {
   type: string;
   itemId: string;
   userId: string;
-  upvotes: string[];
+  upvotes: string;
   hasupVoted: boolean;
-  downvotes: string[];
+  downvotes: string;
   hasdownVoted: boolean;
   hasSaved?: boolean;
 }
@@ -38,6 +38,14 @@ const Votes = ({
   const router = useRouter();
 
   async function handleSave() {
+    if (!userId) {
+      return toast({
+        title: "Sign in to vote",
+        description: "Please sign in to save question",
+        variant: "destructive",
+      });
+    }
+
     await toggleSaveQuestion({
       userId: JSON.parse(userId),
       questionId: JSON.parse(itemId),
@@ -49,11 +57,13 @@ const Votes = ({
       variant: !hasSaved ? "default" : "destructive",
     });
   }
+
   async function handleVote(action: string) {
     if (!userId) {
       return toast({
         title: "Sign in to vote",
         description: "Please sign in to vote",
+        variant: "destructive",
       });
     }
     if (action === "upvote") {
@@ -101,17 +111,17 @@ const Votes = ({
       }
 
       return toast({
-        title: `Downvote ${!hasupVoted ? "Successful" : "Removed"}`,
-        variant: !hasupVoted ? "default" : "destructive",
+        title: `Downvote ${!hasdownVoted ? "Successful" : "Removed"}`,
+        variant: !hasdownVoted ? "default" : "destructive",
       });
     }
   }
 
   useEffect(() => {
-    viewQuestion({
-      questionId: JSON.parse(itemId),
-      userId: userId ? JSON.parse(userId) : undefined,
-    });
+    // viewQuestion({
+    //   questionId: JSON.parse(itemId),
+    //   userId: userId ? JSON.parse(userId) : undefined,
+    // });
   }, [itemId, type, userId, router]);
 
   return (
@@ -132,7 +142,7 @@ const Votes = ({
             min-w-[18px] rounded-sm p-1"
             >
               <p className="subtle-medium text-dark400_light900">
-                {formatAndDivideNumber(upvotes.length)}
+                {formatAndDivideNumber(+upvotes)}
               </p>
             </div>
           </div>
@@ -153,7 +163,7 @@ const Votes = ({
             min-w-[18px] rounded-sm p-1"
             >
               <p className="subtle-medium text-dark400_light900">
-                {formatAndDivideNumber(downvotes.length)}
+                {formatAndDivideNumber(+downvotes)}
               </p>
             </div>
           </div>

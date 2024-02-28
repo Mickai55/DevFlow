@@ -1,5 +1,6 @@
 import Answer from "@/components/forms/Answer";
 import AllAnswers from "@/components/shared/AllAnswers";
+import EditDeleteAction from "@/components/shared/EditDeleteAction";
 import Metric from "@/components/shared/Metric";
 import ParseHTML from "@/components/shared/ParseHTML";
 import RenderTag from "@/components/shared/RenderTag";
@@ -7,7 +8,7 @@ import Votes from "@/components/shared/Votes";
 import { getQuestionById } from "@/lib/actions/question.action";
 import { getUserById } from "@/lib/actions/user.action";
 import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
-import { auth } from "@clerk/nextjs";
+import { SignedIn, auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -25,6 +26,7 @@ const Page = async ({ params, searchParams }: any) => {
   if (clerkId) {
     mongoUser = await getUserById({ userId: clerkId });
   }
+  const showActionButtons = clerkId && clerkId === result.author.clerkId;
 
   return (
     <>
@@ -52,13 +54,21 @@ const Page = async ({ params, searchParams }: any) => {
             <Votes
               type="Question"
               itemId={JSON.stringify(result._id)}
-              userId={JSON.stringify(mongoUser._id)}
+              userId={JSON.stringify(mongoUser?._id)}
               upvotes={result.upvotes.length}
-              hasupVoted={result.upvotes.includes(mongoUser._id)}
+              hasupVoted={result.upvotes.includes(mongoUser?._id)}
               downvotes={result.downvotes.length}
-              hasdownVoted={result.downvotes.includes(mongoUser._id)}
+              hasdownVoted={result.downvotes.includes(mongoUser?._id)}
               hasSaved={mongoUser?.saved.includes(result._id)}
             />
+            <SignedIn>
+              {showActionButtons && (
+                <EditDeleteAction
+                  type="Question"
+                  itemId={JSON.stringify(params.id)}
+                />
+              )}
+            </SignedIn>
           </div>
         </div>
         <h2 className="h2-semibold text-dark200_light900 mt-3.5 w-full text-left">
@@ -70,7 +80,7 @@ const Page = async ({ params, searchParams }: any) => {
           imgUrl="/assets/icons/clock.svg"
           alt="clock icon"
           value={` asked ${getTimestamp(result.createdAt)}`}
-          title=" Asked"
+          title=""
           textStyles="small-medium text-dark400_light800"
         />
         <Metric
@@ -104,7 +114,8 @@ const Page = async ({ params, searchParams }: any) => {
 
       <AllAnswers
         questionId={result._id}
-        userId={result.author._id}
+        userId={JSON.stringify(mongoUser?._id)}
+        clerkId={clerkId}
         totalAnswers={result.answers.length}
         page={searchParams?.page}
         filter={searchParams?.filter}
@@ -114,6 +125,7 @@ const Page = async ({ params, searchParams }: any) => {
         question={result.content}
         questionId={JSON.stringify(result._id)}
         authorId={JSON.stringify(result.author._id)}
+        userId={JSON.stringify(mongoUser?._id)}
       />
     </>
   );

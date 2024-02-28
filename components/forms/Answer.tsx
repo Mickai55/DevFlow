@@ -24,9 +24,10 @@ interface Props {
   question: string;
   questionId: string;
   authorId: string;
+  userId: string;
 }
 
-const Answer = ({ question, questionId, authorId }: Props) => {
+const Answer = ({ question, questionId, authorId, userId }: Props) => {
   const pathname = usePathname();
   const [isSubmitting, setisSubmitting] = useState(false);
   const [isSubmittingAI, setIsSubmittingAI] = useState(false);
@@ -42,6 +43,13 @@ const Answer = ({ question, questionId, authorId }: Props) => {
   async function handleCreateAnswer(values: z.infer<typeof AnswersSchema>) {
     setisSubmitting(true);
     try {
+      if (!userId) {
+        return toast({
+          variant: "destructive",
+          title: "Sign in to add answer",
+          description: "Please sign in to add answer",
+        });
+      }
       await createAnswer({
         content: values.answer,
         author: JSON.parse(authorId),
@@ -49,9 +57,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
         path: pathname,
       });
 
-      toast({
-        title: `Answer Added`,
-      });
+      toast({ title: "Answer Added" });
 
       form.reset();
       const editor = editorRef.current as any;
@@ -87,6 +93,11 @@ const Answer = ({ question, questionId, authorId }: Props) => {
       if (editorRef.current) {
         const editor = editorRef.current as any;
         editor.setContent(formattedAnswer);
+        form.setValue(
+          "answer",
+          // @ts-ignore
+          editorRef.current.getContent()
+        );
       }
       setIsSubmittingAI(false);
 
@@ -140,6 +151,14 @@ const Answer = ({ question, questionId, authorId }: Props) => {
                 <FormControl className="mt-3.5">
                   <Editor
                     onKeyPress={(e) => {
+                      if (editorRef.current)
+                        form.setValue(
+                          "answer",
+                          // @ts-ignore
+                          editorRef.current.getContent()
+                        );
+                    }}
+                    onPaste={(e) => {
                       if (editorRef.current)
                         form.setValue(
                           "answer",
