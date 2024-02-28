@@ -35,7 +35,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
             <h2 className="h2-bold text-dark100_light900">
               {userInfo.user.name}
             </h2>
-            <p className="paragraph-regular text-dark-200_light800">
+            <p className="paragraph-regular text-dark100_light900">
               @{userInfo.user.username}
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-start gap-5">
@@ -56,6 +56,10 @@ const Page = async ({ params, searchParams }: URLProps) => {
                 imgUrl="/assets/icons/calendar.svg"
                 title={getJoinedDate(userInfo.user.joinedAt)}
               />
+              <ProfileLink
+                imgUrl="/assets/icons/star-filled.svg"
+                title={`${userInfo.reputation} points`}
+              />
             </div>
             {userInfo.user.bio && (
               <p className="paragraph-regular text-dark-400_light800 mt-8">
@@ -64,7 +68,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
             )}
           </div>
         </div>
-        <div className="flex justify-end max-sm-mb-5 max-sm:w-full sm:mt-3">
+        <div className="flex justify-end max-sm-mb-5 xl:w-full sm:mt-3">
           <SignedIn>
             {clerkId === userInfo.user.clerkId && (
               <Link href="/profile/edit">
@@ -80,7 +84,6 @@ const Page = async ({ params, searchParams }: URLProps) => {
         </div>
       </div>
       <Stats
-        reputation={userInfo.reputation}
         totalQuestions={userInfo.totalQuestions}
         totalAnswers={userInfo.totalAnswers}
         badges={userInfo.badgeCounts}
@@ -90,13 +93,13 @@ const Page = async ({ params, searchParams }: URLProps) => {
           <TabsList className="background-light800_dark400 min-h-[42px] p-1">
             <TabsTrigger
               value="top-posts"
-              className="tab data-[state=active]:bg-white"
+              className="tab data-[state=active]:background-light700_dark300"
             >
               Top Posts
             </TabsTrigger>
             <TabsTrigger
               value="answers"
-              className="tab data-[state=active]:bg-white"
+              className="tab data-[state=active]:background-light700_dark300"
             >
               Answers
             </TabsTrigger>

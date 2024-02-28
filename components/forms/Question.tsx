@@ -36,7 +36,6 @@ const Question = ({ type, questionDetails, mongoUserId }: Props) => {
   const [isSubmitting, setisSubmitting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  console.log(questionDetails);
 
   let parseQuestionDetails: any;
   let groupedTags: any;
@@ -67,7 +66,6 @@ const Question = ({ type, questionDetails, mongoUserId }: Props) => {
           content: values.explanation,
           path: pathname,
         });
-        router.push(`/question/edit/${parseQuestionDetails?._id}`);
       } else {
         // make an API call
         await createQuestion({
@@ -81,10 +79,9 @@ const Question = ({ type, questionDetails, mongoUserId }: Props) => {
         toast({
           title: `Question Added`,
         });
-
-        // navigate to home page
-        router.push("/");
       }
+      // navigate to home page
+      router.push("/");
     } catch (error) {
       // display error message
     } finally {
@@ -167,6 +164,14 @@ const Question = ({ type, questionDetails, mongoUserId }: Props) => {
               <FormControl className="mt-3.5">
                 <Editor
                   onKeyPress={(e) => {
+                    if (editorRef.current)
+                      form.setValue(
+                        "explanation",
+                        // @ts-ignore
+                        editorRef.current.getContent()
+                      );
+                  }}
+                  onPaste={(e) => {
                     if (editorRef.current)
                       form.setValue(
                         "explanation",

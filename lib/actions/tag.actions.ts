@@ -87,7 +87,7 @@ export async function getQuestionsByTagId(params: GetQuestionsByTagIdParams) {
 
     const tagFiter: FilterQuery<typeof Tag> = { _id: tagId };
 
-    const tag = await Tag.findOne({ tagFiter }).populate({
+    const tag = await Tag.findOne(tagFiter).populate({
       path: "questions",
       model: Question,
       match: searchQuery

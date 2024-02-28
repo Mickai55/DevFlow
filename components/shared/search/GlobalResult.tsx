@@ -55,20 +55,20 @@ const GlobalResult = () => {
 
   return (
     <div
-      className="absolute top-full z-10 mt-3 w-full bg-light-800 py-5 
+      className="absolute top-full z-10 mt-3 w-full bg-light-800 py-5 text-dark200_light800
     shadow-sm dark:bg-dark-400 rounded-xl"
     >
       <GlobalFilters />
       <div className="my-5 h-[1px] bg-light700/50 dark:bg-dark-500/50" />
       <div className="space-y-5">
-        <p className="text-dark-400_light900 paragraph-semibold px-5">
+        <p className="text-dark400_light900 paragraph-semibold px-5">
           Top Match
         </p>
 
         {isLoading ? (
           <div className="flex-center flex-col px-5">
             <ReloadIcon className="my-2 h-10 w-10 text-primary-500 animate-spin" />
-            <p className="text-dark-200_light800 body-regular">
+            <p className="text-dark200_light800 body-regular">
               Browsing the entire database
             </p>
           </div>
@@ -90,10 +90,10 @@ const GlobalResult = () => {
                     className="invert-colors mt-1 object-contain"
                   />
                   <div className="flex flex-col">
-                    <p className="body-medium text-dark-200_light800 line-clamp">
+                    <p className="body-medium text-dark200_light800 line-clamp">
                       {item.title}
                     </p>
-                    <p className="text-dark-400_light500 small-medium mt-1 font-bold capitalize">
+                    <p className="text-dark400_light500 small-medium mt-1 font-bold capitalize">
                       {item.type}
                     </p>
                   </div>
@@ -101,7 +101,7 @@ const GlobalResult = () => {
               ))
             ) : (
               <div className="flex-center flex-col px-5 ">
-                <p className="text-dark-200_light800 body-regular px-5 py-2.5">
+                <p className="text-dark200_light800 body-regular px-5 py-2.5">
                   Oops, no results found
                 </p>
               </div>

@@ -21,12 +21,13 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
   const handleDelete = async () => {
     if (type === "Question") {
       await deleteQuestion({ questionId: JSON.parse(itemId), path });
+      router.push("/");
     } else if (type === "Answer") {
       await deleteAnswer({ answerId: JSON.parse(itemId), path });
     }
   };
   return (
-    <div className="flex items-center justify-end gap-3 max-sm:w-full">
+    <div className="flex items-center justify-end gap-3 max-sm:w-full ml-3">
       {type === "Question" && (
         <Image
           src="/assets/icons/edit.svg"

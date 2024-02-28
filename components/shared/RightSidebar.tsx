@@ -22,14 +22,14 @@ const RightSidebar = async () => {
           {hotQuestions.map((question: any) => (
             <Link
               key={question._id}
-              className="flex cursor-pointer items-center justify-between gap-7"
+              className="flex cursor-pointer items-center justify-between gap-7 hover:bg-transparent/5"
               href={`/question/${question._id}`}
             >
               <p className="body-medium text-dark500_light700">
                 {question.title}
               </p>
               <Image
-                src="assets/icons/chevron-right.svg"
+                src="/assets/icons/chevron-right.svg"
                 alt="arrow"
                 width={20}
                 height={20}

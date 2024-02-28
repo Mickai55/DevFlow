@@ -10,7 +10,6 @@ import {
 } from "./shared.types";
 import Question from "@/database/question.model";
 import { revalidatePath } from "next/cache";
-import Tag from "@/database/tag.model";
 import Interaction from "@/database/interaction.model";
 import User from "@/database/user.model";
 
