@@ -1,7 +1,30 @@
+# DevFlow
+
+DevFlow is an app similar to StackOverflow, built using Next.js 14 and a variety of other technologies. 
+
+It's designed to facilitate developer collaboration, problem-solving, and knowledge-sharing within the tech community. 
+
+## Functionalities
+
+- **Global Search:** Enables quick content discovery across the platform.
+- **Sorting and Filtering with URL:** Provides customizable view options through URL parameters.
+- **Voting:** Facilitates community engagement through content evaluation.
+- **AI Answers:** Offers automated assistance for common queries.
+- **Full Responsive Design:** Ensures seamless experience across all devices.
+
+## Features
+
+- **StackOverflow-like Q&A:** Users can ask questions, provide answers, and vote on the best solutions.
+- **Tagging System:** Organize questions by relevant tags for easy searching and filtering.
+- **User Authentication:** Secure login and registration using Clerk for authentication.
+- **Responsive Design:** Tailwind CSS ensures a seamless experience across devices.
+- **Syntax Highlighting:** Prism.js provides syntax highlighting for code snippets.
+- **Webhooks:** Integration with webhooks for real-time updates and notifications.
+- **TypeScript Support:** Written in TypeScript for enhanced developer productivity and code maintainability.
+- **Database Integration:** MongoDB with Mongoose for efficient data storage and retrieval.
+
+## Setup on your PC
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
 First, run the development server:
 
 ```bash
