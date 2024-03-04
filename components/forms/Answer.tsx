@@ -93,6 +93,7 @@ const Answer = ({ question, questionId, authorId, userId }: Props) => {
       if (editorRef.current) {
         const editor = editorRef.current as any;
         editor.setContent(formattedAnswer);
+        toast({ title: "AI Answer created" });
         form.setValue(
           "answer",
           // @ts-ignore
@@ -103,6 +104,9 @@ const Answer = ({ question, questionId, authorId, userId }: Props) => {
 
       // Toast...
     } catch (error) {
+      setIsSubmittingAI(false);
+
+      toast({ title: "Error when creating AI Answer" });
       console.log(error);
     } finally {
     }

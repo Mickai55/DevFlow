@@ -118,10 +118,10 @@ const Votes = ({
   }
 
   useEffect(() => {
-    // viewQuestion({
-    //   questionId: JSON.parse(itemId),
-    //   userId: userId ? JSON.parse(userId) : undefined,
-    // });
+    viewQuestion({
+      questionId: JSON.parse(itemId),
+      userId: userId ? userId : undefined,
+    });
   }, [itemId, type, userId, router]);
 
   return (
