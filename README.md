@@ -1,6 +1,6 @@
 # DevFlow
 
-DevFlow is an app similar to StackOverflow, built using Next.js 14 and a variety of other technologies. 
+DevFlow is an app similar to StackOverflow, built using Next.js 14 with Server Actions and a variety of other technologies. 
 
 It's designed to facilitate developer collaboration, problem-solving, and knowledge-sharing within the tech community. 
 
