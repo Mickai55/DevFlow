@@ -1,4 +1,4 @@
-# DevFlow
+![ss1](https://github.com/Mickai55/DevFlow/assets/49816114/02db7e95-073c-4885-a733-bc3cc9324405)# DevFlow
 
 DevFlow is an app similar to StackOverflow, built using Next.js 14 with Server Actions and a variety of other technologies. 
 
@@ -25,9 +25,9 @@ It's designed to facilitate developer collaboration, problem-solving, and knowle
 
 ## Images
 
-- ![alt text](https://drive.google.com/file/d/1pUGp4tH6XO-_4Q3OMiXL_eMbjqd4zMR3/view?usp=drive_link)
-- ![alt text](https://drive.google.com/file/d/17KyViex97-b4i_NjsQECFkvDasdWjxr8/view?usp=drive_link)
-- ![alt text](https://drive.google.com/file/d/1AAwj4lplaPd8XB9CYP1tNs92OJoe4qgN/view?usp=sharing)
+- ![ss1](https://github.com/Mickai55/DevFlow/assets/49816114/4f736d4d-1af0-4837-993c-8bc2fc662545)
+- ![ss2](https://github.com/Mickai55/DevFlow/assets/49816114/80f63fea-0173-43fb-a9dd-a273b8afae70)
+- ![ss3](https://github.com/Mickai55/DevFlow/assets/49816114/2347d519-4a7b-4709-93c0-8f8e632072fc)
 
 ## Setup on your PC
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
