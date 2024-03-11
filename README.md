@@ -1,4 +1,4 @@
-![ss1](https://github.com/Mickai55/DevFlow/assets/49816114/02db7e95-073c-4885-a733-bc3cc9324405)# DevFlow
+# DevFlow
 
 DevFlow is an app similar to StackOverflow, built using Next.js 14 with Server Actions and a variety of other technologies. 
 
